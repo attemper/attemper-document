@@ -5,9 +5,9 @@ var utils = require('./utils.js')
 var { genNav, getComponentSidebar, deepClone } = utils
 
 module.exports = {
-  title: 'vue-element-admin',
-  description: 'A magical vue admin',
-  base: '/vue-element-admin-site/',
+  title: 'Attemper',
+  description: '--',
+  base: '/',
   head: [
     [
       'link',
@@ -18,134 +18,24 @@ module.exports = {
     ]
   ],
   themeConfig: {
-    repo: 'PanJiaChen/vue-element-admin',
-    docsRepo: 'PanJiaChen/vue-element-admin-site',
+    repo: 'ldang264/attemper',
+    docsRepo: 'ldang264/attemper-document',
     docsDir: 'docs',
     editLinks: true,
     sidebarDepth: 3,
     algolia: {
       apiKey: 'ffce0083d0830de5f562c045a481410b',
-      indexName: 'vue_element_admin'
+      indexName: 'attemper'
     },
     locales: {
       '/': {
-        label: 'English',
-        selectText: 'Languages',
-        editLinkText: 'Edit this page on GitHub',
-        nav: [
-          {
-            text: 'Guide',
-            link: '/guide/'
-          },
-          {
-            text: 'Features',
-            items: genNav(deepClone(ComponentNav), 'EN')
-          },
-          {
-            text: 'Ecosystem',
-            items: genNav(deepClone(EcosystemNav), 'EN')
-          },
-          {
-            text: 'Donate',
-            link: '/donate/'
-          },
-          {
-            text: '中文站点(gitee)',
-            link: 'https://panjiachen.gitee.io/vue-element-admin-site/zh/'
-          }
-        ],
-        sidebar: {
-          '/guide/': [
-            {
-              title: 'Essentials',
-              collapsable: false,
-              children: genEssentialsSidebar()
-            },
-            {
-              title: 'Advanced',
-              collapsable: false,
-              children: genAdvancedSidebar()
-            },
-            {
-              title: 'Other',
-              collapsable: false,
-              children: [
-                '/guide/other/gitter.md',
-                '/guide/other/release-notes.md'
-              ]
-            }
-          ],
-          '/feature/component/': getComponentSidebar(
-            deepClone(ComponentNav),
-            'EN'
-          ),
-          '/feature/script/': [
-            '/feature/script/svgo.md',
-            '/feature/script/new.md'
-          ]
-        }
-      },
-      '/es/': {
-        label: 'Español',
-        selectText: 'Idiomas',
-        editLinkText: 'Editar esta página en GitHub',
-        nav: [
-          {
-            text: 'Guía',
-            link: '/es/guide/'
-          },
-          {
-            text: 'Caracteristicas',
-            items: genNav(deepClone(ComponentNav), 'ES')
-          },
-          {
-            text: 'Ecosistema',
-            items: genNav(deepClone(EcosystemNav), 'ES')
-          },
-          {
-            text: 'Donar',
-            link: '/es/donate/'
-          }
-        ],
-        sidebar: {
-          '/es/guide/': [
-            {
-              title: 'Esenciales',
-              collapsable: false,
-              children: genEssentialsSidebar('/es')
-            },
-            {
-              title: 'Avanzado',
-              collapsable: false,
-              children: genAdvancedSidebar('/es')
-            },
-            {
-              title: 'Otro',
-              collapsable: false,
-              children: [
-                '/es/guide/other/gitter.md',
-                '/es/guide/other/release-notes.md'
-              ]
-            }
-          ],
-          '/es/feature/component/': getComponentSidebar(
-            deepClone(ComponentNav),
-            'ES'
-          ),
-          '/es/feature/script/': [
-            '/es/feature/script/svgo.md',
-            '/es/feature/script/new.md'
-          ]
-        }
-      },
-      '/zh/': {
-        label: '简体中文',
-        selectText: '选择语言',
+        label: '中文',
+        selectText: 'Language',
         editLinkText: '在 GitHub 上编辑此页',
         nav: [
           {
             text: '指南',
-            link: '/zh/guide/'
+            link: '/guide/'
           },
           {
             text: '功能',
@@ -156,42 +46,38 @@ module.exports = {
             items: genNav(deepClone(EcosystemNav), 'ZH')
           },
           {
-            text: '捐赠',
-            link: '/zh/donate/'
-          },
-          {
             text: '中文站点(gitee)',
             link: 'https://panjiachen.gitee.io/vue-element-admin-site/zh/'
           }
         ],
         sidebar: {
-          '/zh/guide/': [
+          '/guide/': [
             {
               title: '基础',
               collapsable: false,
-              children: genEssentialsSidebar('/zh')
+              children: genEssentialsSidebar()
             },
             {
               title: '进阶',
               collapsable: false,
-              children: genAdvancedSidebar('/zh')
+              children: genAdvancedSidebar()
             },
             {
-              title: '其它',
+              title: '其他',
               collapsable: false,
               children: [
-                '/zh/guide/other/faq.md',
-                '/zh/guide/other/release-notes.md'
+                '/guide/other/gitter.md',
+                '/guide/other/release-notes.md'
               ]
             }
           ],
-          '/zh/feature/component/': getComponentSidebar(
+          '/feature/component/': getComponentSidebar(
             deepClone(ComponentNav),
             'ZH'
           ),
-          '/zh/feature/script/': [
-            '/zh/feature/script/svgo.md',
-            '/zh/feature/script/new.md'
+          '/feature/script/': [
+            '/feature/script/svgo.md',
+            '/feature/script/new.md'
           ]
         }
       }
@@ -199,16 +85,13 @@ module.exports = {
   },
   locales: {
     '/': {
-      lang: 'en-US',
-      description: 'A magical vue admin'
-    },
-    '/zh/': {
       lang: 'zh-CN',
-      description: 'A magical vue admin'
+      description: '多租户、弹性伸缩、异步的分布式任务调度应用'
     },
-    '/es/': {
-      lang: 'es-ES',
-      description: 'Un administrador mágico de vue'
+    '/en/': {
+      lang: 'en-US',
+      description:
+        'Multi-tenancy,elastic,asynchronous-distributed scheduling application'
     }
   },
   configureWebpack: {

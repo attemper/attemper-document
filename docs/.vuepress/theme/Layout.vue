@@ -5,12 +5,12 @@
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
-    <div v-if="isHome" class="home-codefund" id="codefund"></div>
+    <!--<div v-if="isHome" class="home-codefund" id="codefund"></div>-->
 
     <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
 
     <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
-    <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
+    <!--<Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
       <div slot="top" :class="{'load-success':loadSuccess}">
         <div v-if="!isHome&&!isCN" id="codefund" :key="$route.path"></div>
 
@@ -28,7 +28,7 @@
         </a>
       </div>
       <slot name="sidebar-bottom" slot="bottom"/>
-    </Sidebar>
+    </Sidebar>-->
 
     <div class="custom-layout" v-if="$page.frontmatter.layout">
       <component :is="$page.frontmatter.layout"/>
@@ -187,7 +187,8 @@ export default {
 }
 </script>
 
-<style src="prismjs/themes/prism-tomorrow.css"></style>
+<style src="prismjs/themes/prism-tomorrow.css">
+</style>
 <style src="@default-theme/styles/theme.styl" lang="stylus"></style>
 
 <style>

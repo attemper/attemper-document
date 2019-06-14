@@ -2,7 +2,7 @@ function deepClone(d) {
   return JSON.parse(JSON.stringify(d))
 }
 
-function genNav(items, type = 'EN') {
+function genNav(items, type = 'ZH') {
   return items.filter(v => {
     if (v.type && v.type !== type) return false
 
@@ -10,7 +10,7 @@ function genNav(items, type = 'EN') {
       v.text = v[`text${type}`]
     }
 
-    if (type != 'EN' && v.link && !isExternalLink(v.link)) {
+    if (type != 'ZH' && v.link && !isExternalLink(v.link)) {
       v.link = `/${type.toLocaleLowerCase()}${v.link}`
     }
 
@@ -31,9 +31,9 @@ function isExternalLink(routePath) {
   return validateURL(routePath)
 }
 
-function getComponentSidebar(item, type = 'EN') {
+function getComponentSidebar(item, type = 'ZH') {
   return item[0].items.map(v => {
-    if (type != 'EN' && v.link && !isExternalLink(v.link)) {
+    if (type != 'ZH' && v.link && !isExternalLink(v.link)) {
       v.link = `/${type.toLocaleLowerCase()}${v.link}`
     }
     return v.link

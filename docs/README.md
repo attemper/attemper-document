@@ -2,33 +2,26 @@
 home: true
 heroImage: /home.png
 title: a
-actionText: Get Started →
+actionText: 快速上手 →
 actionLink: /guide/
 features:
-  - title: Feature-rich
-    details: Typical templates for enterprise applications and various components
-  - title: Best Practice
-    details: Reasonable framework choice, good engineering practice
-  - title: Up-to-date Dev Stack
-    details: Development using front-end advanced technology
-  - title: Permission Validation
-    details: Dynamic loading of route and rendering sidebar based on permissions
-  - title: Globalization
-    details: Built-in industry universal international solution
-  - title: Theming
-    details: Supports multiple dynamic skin methods
-footer: MIT Licensed | Copyright © 2017-present PanJiaChen
+  - title: 多租户
+    details: 一套程序支持多个系统
+  - title: 弹性伸缩
+    details: 使用服务发现，调度器和执行器可弹性扩展
+  - title: 任务编排
+    details: 流式与依赖、版本管理
+  - title: 任务类型
+    details: Java/Python/Shell/Perl/Groovy/Ruby/Javascript
+  - title: 触发器
+    details: 支持比如Cron/每日09:15到15:00/每周第一个交易日等
+  - title: 证券交易日
+    details: 支持证券日历，可自定义并导入日历
+  - title: 国际化
+    details: 前后端均支持中英文两种语言；调度支持国际化时区
+  - title: 后端技术栈
+    details: spring-boot@2+、spring-cloud@Greenwich+、quartz、disruptor、camunda
+  - title: 前端技术栈
+    details: vue、element-ui、bpmn-js
+footer: MIT Licensed | Copyright © 2019-present ldang264
 ---
-
-## Getting Started
-
-```bash
-# clone the project
-git clone https://github.com/PanJiaChen/vue-element-admin.git
-
-# install dependency
-npm install
-
-# develop
-npm run dev
-```

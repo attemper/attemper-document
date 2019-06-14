@@ -44,7 +44,7 @@ var EcosystemNav = [
         textZH: '国内文档(解决Github.io访问慢的问题)',
         link: 'https://panjiachen.gitee.io/vue-element-admin-site/zh'
       },
-      {
+      /*{
         text: 'Gitter',
         textZH: 'Gitter讨论组',
         link: 'https://gitter.im/vue-element-admin/discuss'
@@ -53,13 +53,13 @@ var EcosystemNav = [
         textZH: '作者Blog',
         link: 'https://jianshiapp.com/circles/1209',
         type: 'ZH'
-      },
+      },*/
       {
         textZH: '常见问题',
         link: '/guide/other/faq.md',
         type: 'ZH'
       },
-      {
+      /*{
         textZH: 'QQ群',
         link: 'https://github.com/PanJiaChen/vue-element-admin/issues/602',
         type: 'ZH'
@@ -68,7 +68,7 @@ var EcosystemNav = [
         textZH: '作者个人微博',
         link: 'https://weibo.com/u/3423485724',
         type: 'ZH'
-      },
+      },*/
       {
         text: 'Changelog',
         textES: 'Registro de cambios',
