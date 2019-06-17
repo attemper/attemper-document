@@ -1,7 +1,6 @@
 var EcosystemNav = [
   {
     textEN: 'Repositories',
-    textES: 'Repositorios',
     textZH: '项目',
     items: [
       {
@@ -37,7 +36,6 @@ var EcosystemNav = [
   },
   {
     textEN: 'Help',
-    textES: 'Ayuda',
     textZH: '帮助',
     items: [
       {
@@ -71,7 +69,6 @@ var EcosystemNav = [
       },*/
       {
         text: 'Changelog',
-        textES: 'Registro de cambios',
         textZH: '更新记录',
         link: 'https://github.com/PanJiaChen/vue-element-admin/releases'
       }
@@ -82,61 +79,84 @@ var EcosystemNav = [
 var ComponentNav = [
   {
     text: 'Component',
-    textES: 'Componente',
-    textZH: '组件',
+    textZH: '调度管理',
     items: [
       {
-        text: 'Rich Text Editor',
-        textES: 'Editor de Texto Enriquecido',
-        textZH: '富文本',
-        link: '/feature/component/rich-editor.md'
+        text: 'Job',
+        textZH: '任务',
+        link: '/feature/component/job.md'
       },
       {
-        text: 'Markdown Editor',
-        textES: 'Editor de Markdown',
-        textZH: 'Markdown 编辑器',
+        text: 'Trigger',
+        textZH: '触发器',
         link: '/feature/component/markdown-editor.md'
       },
       {
-        text: 'Svg Icon',
-        textES: 'Icono Svg',
-        textZH: 'Svg Icon 图标',
+        text: 'Arg',
+        textZH: '参数',
         link: '/feature/component/svg-icon.md'
       },
       {
-        text: 'Clipboard',
-        textES: 'Portapapeles',
-        textZH: '复制粘贴',
+        text: 'Calendar',
+        textZH: '日历',
         link: '/feature/component/clipboard.md'
       },
       {
-        text: 'Excel',
-        textZH: 'Excel',
+        text: 'DataSource',
+        textZH: '数据源',
         link: '/feature/component/excel.md'
       },
       {
-        text: 'Pagination',
-        textES: 'Paginación',
-        textZH: 'Pagination 分页',
-        link: '/feature/component/pagination.md'
-      },
-      {
         text: 'Tree Table',
-        textES: 'Tabla de Arbol',
         textZH: 'Tree Table 树形表格',
         link: '/feature/component/tree-table.md'
       }
     ]
   },
   {
-    text: 'Script',
+    text: 'Monitor',
+    textZH: '监控告警',
     items: [
       {
-        text: 'Svgo',
-        link: '/feature/script/svgo.md'
+        text: 'Monitor',
+        textZH: '监控',
+        link: '/feature/component/pagination.md'
       },
       {
-        text: 'New',
+        text: 'Alarm',
+        textZH: '告警',
+        link: '/feature/script/new.md'
+      }
+    ]
+  },
+  {
+    text: 'Analysis',
+    textZH: '统计分析',
+    items: [
+      {
+        text: 'Monitor',
+        textZH: '监控',
+        link: '/feature/component/pagination.md'
+      },
+      {
+        text: 'Alarm',
+        textZH: '告警',
+        link: '/feature/script/new.md'
+      }
+    ]
+  },
+  {
+    text: 'System',
+    textZH: '系统管理',
+    items: [
+      {
+        text: 'Tenant',
+        textZH: '多租户',
+        link: '/feature/component/pagination.md'
+      },
+      {
+        text: 'Service',
+        textZH: '多服务',
         link: '/feature/script/new.md'
       }
     ]
