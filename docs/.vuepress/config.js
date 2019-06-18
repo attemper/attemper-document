@@ -40,14 +40,6 @@ module.exports = {
           {
             text: '功能',
             items: genNav(deepClone(ComponentNav), 'ZH')
-          },
-          {
-            text: '生态系统',
-            items: genNav(deepClone(EcosystemNav), 'ZH')
-          },
-          {
-            text: '中文站点(gitee)',
-            link: 'https://panjiachen.gitee.io/vue-element-admin-site/zh/'
           }
         ],
         sidebar: {

@@ -22,8 +22,6 @@ pageClass: getting-started
 [![GitHub stars](https://img.shields.io/github/stars/PanJiaChen/vue-element-admin.svg?style=social&label=Stars)](https://github.com/PanJiaChen/vue-element-admin)
 -->
 
-<!-- <CodingAD /> -->
-
 Attemper 是一个分布式任务调度应用，基于 Java 语言实现（前端是 Vue）。
 本项目基于 quartz 实现分布式任务调度（定时、API）；引入 camunda 作为任务执行框架，支持工作流式任务编排、并行批量调度，支持任务参数传递和数据质量统计分析。
 
@@ -108,5 +106,39 @@ Attemper 是一个分布式任务调度应用，基于 Java 语言实现（前�
 - 多服务管理
   - 一个租户下，多个分布式服务均可使用该租户
   - 支持服务以域名、IP端口和服务发现的方式对接
-
 ```
+
+## 预览
+
+- 菜单列表<br>
+  ![](./assets/menu.png)
+
+- 任务编排<br>
+
+  - 任务列表<br>
+    ![](./assets/job.png)
+  - 任务流设计<br>
+    ![](./assets/flow.png)
+
+- 触发器<br>
+
+  - cron 表达式触发器<br>
+    ![](./assets/trigger-cron.png)
+  - 日程偏移触发器<br>
+    ![](./assets/trigger-calendar_offset.png)
+  - 每日周期触发器<br>
+    ![](./assets/trigger-daily_time_interval.png)
+  - 日历周期触发器<br>
+    ![](./assets/trigger-calendar_interval.png)
+
+- 参数<br>
+  ![](./assets/arg.png)
+- 日历管理<br>
+  ![](./assets/calendar.png)
+
+- 数据源管理<br>
+  ![](./assets/datasource.png)
+
+- 监控管理<br>
+  - 监控列表
+    ![](./assets/monitor.png)

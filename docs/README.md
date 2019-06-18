@@ -2,7 +2,7 @@
 home: true
 heroImage: /home.png
 title: a
-actionText: 快速上手 →
+actionText: 快速开始 →
 actionLink: /guide/
 features:
   - title: 多租户

@@ -105,11 +105,6 @@ var ComponentNav = [
         text: 'DataSource',
         textZH: '数据源',
         link: '/feature/component/excel.md'
-      },
-      {
-        text: 'Tree Table',
-        textZH: 'Tree Table 树形表格',
-        link: '/feature/component/tree-table.md'
       }
     ]
   },
@@ -134,13 +129,13 @@ var ComponentNav = [
     textZH: '统计分析',
     items: [
       {
-        text: 'Monitor',
-        textZH: '监控',
+        text: 'Chart',
+        textZH: '图表',
         link: '/feature/component/pagination.md'
       },
       {
-        text: 'Alarm',
-        textZH: '告警',
+        text: 'Report',
+        textZH: '报表',
         link: '/feature/script/new.md'
       }
     ]
