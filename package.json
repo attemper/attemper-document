@@ -1,7 +1,7 @@
 {
-  "name": "vue-element-admin-site",
+  "name": "attemper-document",
   "version": "2.0.0",
-  "description": "vue-element-admin-site",
+  "description": "attemper-document",
   "main": "index.js",
   "scripts": {
     "dev": "vuepress dev docs",
@@ -19,7 +19,7 @@
     "semi": false,
     "singleQuote": true
   },
-  "author": "PanJiaChen",
+  "author": "ldang264",
   "license": "ISC",
   "devDependencies": {
     "prettier": "1.14.2",
