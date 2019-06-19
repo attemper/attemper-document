@@ -16,6 +16,5 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f "https://${access_token}@github.com/attemper/attemper-document.git" master:gh-pages
-
+git push -f git@github.com:attemper/attemper-document.git master:gh-pages
 cd -
