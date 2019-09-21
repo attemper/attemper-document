@@ -7,7 +7,7 @@ var { genNav, getComponentSidebar, deepClone } = utils
 module.exports = {
   title: 'Attemper',
   description: '--',
-  base: '/attemper-document/',
+  base: '/',
   head: [
     [
       'link',

@@ -83,7 +83,7 @@ var ComponentNav = [
     items: [
       {
         text: 'Job',
-        textZH: '任务',
+        textZH: '任务流',
         link: '/feature/component/job.md'
       },
       {
