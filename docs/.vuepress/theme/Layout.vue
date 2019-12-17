@@ -5,30 +5,15 @@
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
-    <!--<div v-if="isHome" class="home-codefund" id="codefund"></div>-->
-
     <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
 
     <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
-    <!--<Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
+    <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
       <div slot="top" :class="{'load-success':loadSuccess}">
         <div v-if="!isHome&&!isCN" id="codefund" :key="$route.path"></div>
-
-        <a
-          href="https://coding.net/?utm_source=panjiachen"
-          target="_blank"
-          v-if="isCN"
-          @click="clickCoding('sidebar')"
-          style="display: block;"
-        >
-          <img
-            style="width:280px;display: block;margin: 10px auto!important;"
-            src="https://wpimg.wallstcn.com/d8332dc1-ec6c-47bc-9d5d-8cabb1afe417.png"
-          >
-        </a>
       </div>
       <slot name="sidebar-bottom" slot="bottom"/>
-    </Sidebar>-->
+    </Sidebar>
 
     <div class="custom-layout" v-if="$page.frontmatter.layout">
       <component :is="$page.frontmatter.layout"/>
@@ -54,7 +39,6 @@ import Page from '@default-theme/Page.vue'
 import Sidebar from '@default-theme/Sidebar.vue'
 import SWUpdatePopup from '@default-theme/SWUpdatePopup.vue'
 import { resolveSidebarItems } from '@default-theme/util'
-import { getCodefund, loadGitter } from './utils'
 
 export default {
   components: { Home, Page, Sidebar, Navbar, SWUpdatePopup },
@@ -63,21 +47,6 @@ export default {
       isSidebarOpen: false,
       swUpdateEvent: null,
       loadSuccess: true
-    }
-  },
-  watch: {
-    $route: {
-      handler: function(val, oldVal) {
-        if (this.$isServer) return
-        if (this.isCN && !this.isHome) return
-        const { path } = val
-        if (this.isHome) {
-          getCodefund('bottom-bar')
-        } else {
-          getCodefund()
-        }
-      },
-      immediate: true
     }
   },
   computed: {
@@ -136,7 +105,6 @@ export default {
     }
   },
   mounted() {
-    loadGitter()
     window.addEventListener('scroll', this.onScroll)
     // configure progress bar
     nprogress.configure({ showSpinner: false })

@@ -2,18 +2,18 @@
 pageClass: getting-started
 ---
 
-# 介绍
+# 系统简介
 
-[![spring-boot](https://img.shields.io/badge/spring--boot-2.1.5.RELEASE-brightgreen.svg)](https://github.com/spring-projects/spring-boot/releases/tag/v2.1.5.RELEASE)
-[![spring-cloud](https://img.shields.io/badge/spring--cloud-Greenwich.SR1-brightgreen.svg)](https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Greenwich-Release-Notes)
+<!--
+[![spring-boot](https://img.shields.io/badge/spring--boot-2.2.0.RELEASE-brightgreen.svg)](https://github.com/spring-projects/spring-boot/releases/tag/v2.1.5.RELEASE)
+[![spring-cloud](https://img.shields.io/badge/spring--cloud-Greenwich.SR3-brightgreen.svg)](https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Greenwich-Release-Notes)
 [![quartz](https://img.shields.io/badge/quartz-2.3.1+-brightgreen.svg)](https://github.com/quartz-scheduler/quartz/releases/tag/quartz-2.3.1)
 [![camunda](https://img.shields.io/badge/camunda-7.11.0-brightgreen.svg)](https://github.com/camunda/camunda-bpm-platform/releases/tag/7.11.0)
 [![disruptor](https://img.shields.io/badge/disruptor-3.4.2-brightgreen.svg)](https://github.com/LMAX-Exchange/disruptor/releases/tag/3.4.2)
-
 [![vue](https://img.shields.io/badge/vue-2.6.10-brightgreen.svg)](https://github.com/vuejs/vue)
-[![element-ui](https://img.shields.io/badge/element--ui-2.9.1-brightgreen.svg)](https://github.com/ElemeFE/element)
+[![element-ui](https://img.shields.io/badge/element--ui-2.12.0-brightgreen.svg)](https://github.com/ElemeFE/element)
 [![vuw-element-admin](https://img.shields.io/badge/vue--element--admin-4.2.1-brightgreen.svg)](https://github.com/PanJiaChen/vue-element-admin/releases/tag/4.2.1)
-
+-->
 <!--
 [![Build Status](https://travis-ci.org/PanJiaChen/vue-element-admin.svg?branch=master)](https://travis-ci.org/PanJiaChen/vue-element-admin)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/PanJiaChen/vue-element-admin/blob/master/LICENSE)
@@ -25,19 +25,14 @@ pageClass: getting-started
 Attemper 是一个分布式任务调度应用，基于 Java 语言实现（前端是 Vue）。
 本项目基于 quartz 实现分布式任务调度（定时、API）；引入 camunda 作为任务执行框架，支持工作流式任务编排、并行批量调度，支持任务参数传递和数据质量统计分析。
 
-:::tip 提示
-本项目是一个应用，不是框架。除了 SDK 外，不应当作为依赖来集成。
-
+:::tip 框架依赖
+`spring-boot2.2.0` 
+`spring--cloud-Greenwich.SR3` 
+`quartz-2.3.1+` 
+`camunda-7.11.0` 
+`vue-2.6.10` 
+`element--ui-2.12.0`
 :::
-
-<!--
-- 集成方案: [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
-- 基础模板: [vue-admin-template](https://github.com/PanJiaChen/vue-admin-template)
-- 桌面终端: [electron-vue-admin](https://github.com/PanJiaChen/electron-vue-admin)
-- Typescript 版: [vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template) (鸣谢: [@Armour](https://github.com/Armour))
--->
-
-<br/>
 
 ## 功能
 
@@ -109,38 +104,3 @@ Attemper 是一个分布式任务调度应用，基于 Java 语言实现（前�
   - 一个租户下，多个分布式服务均可使用该租户
   - 支持服务以域名、IP端口和服务发现的方式对接
 ```
-
-## 预览
-
-- 菜单列表<br>
-  ![](./assets/menu.png)
-
-- 任务编排<br>
-
-  - 任务列表<br>
-    ![](./assets/job.png)
-  - 任务流设计<br>
-    ![](./assets/flow.png)
-
-- 触发器<br>
-
-  - cron 表达式触发器<br>
-    ![](./assets/trigger-cron.png)
-  - 日程偏移触发器<br>
-    ![](./assets/trigger-calendar_offset.png)
-  - 每日周期触发器<br>
-    ![](./assets/trigger-daily_time_interval.png)
-  - 日历周期触发器<br>
-    ![](./assets/trigger-calendar_interval.png)
-
-- 参数<br>
-  ![](./assets/arg.png)
-- 日历管理<br>
-  ![](./assets/calendar.png)
-
-- 数据源管理<br>
-  ![](./assets/datasource.png)
-
-- 监控管理<br>
-  - 监控列表
-    ![](./assets/monitor.png)

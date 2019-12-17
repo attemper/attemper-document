@@ -1,8 +1,8 @@
 var nav = require('./nav.js')
-var { EcosystemNav, ComponentNav } = nav
+var { UsageNav } = nav
 
 var utils = require('./utils.js')
-var { genNav, getComponentSidebar, deepClone } = utils
+var { genNav, deepClone } = utils
 
 module.exports = {
   title: 'Attemper',
@@ -17,6 +17,7 @@ module.exports = {
       }
     ]
   ],
+  port: 80,
   themeConfig: {
     repo: 'ldang264/attemper',
     docsRepo: 'ldang264/attemper-document',
@@ -39,37 +40,38 @@ module.exports = {
           },
           {
             text: '功能',
-            items: genNav(deepClone(ComponentNav), 'ZH')
+            items: genNav(deepClone(UsageNav), 'ZH')
           }
         ],
         sidebar: {
           '/guide/': [
             {
-              title: '基础',
+              title: '简介',
               collapsable: false,
-              children: genEssentialsSidebar()
-            },
-            {
-              title: '进阶',
-              collapsable: false,
-              children: genAdvancedSidebar()
-            },
-            {
-              title: '其他',
-              collapsable: false,
-              children: [
-                '/guide/other/gitter.md',
-                '/guide/other/release-notes.md'
-              ]
+              children: genGuideSidebar()
             }
           ],
-          '/feature/component/': getComponentSidebar(
-            deepClone(ComponentNav),
-            'ZH'
-          ),
-          '/feature/script/': [
-            '/feature/script/svgo.md',
-            '/feature/script/new.md'
+          '/feature/': [
+            {
+              title: '调度管理',
+              collapsable: false,
+              children: genDispatchSidebar()
+            },
+            {
+              title: '应用管理',
+              collapsable: false,
+              children: genApplicationSidebar()
+            },
+            {
+              title: '监控管理',
+              collapsable: false,
+              children: genMonitorSidebar()
+            },
+            {
+              title: '系统管理',
+              collapsable: false,
+              children: genSystemSidebar()
+            }
           ]
         }
       }
@@ -93,45 +95,64 @@ module.exports = {
       }
     }
   },
-  ga: 'UA-109340118-1'
+  ga: 'UA-109340118-1',
+  markdown: {
+      lineNumbers: true
+  }
 }
 
-function genEssentialsSidebar(type = '') {
+function genGuideSidebar(type = '') {
   const mapArr = [
     '/guide/',
-    '/guide/essentials/layout.md',
-    '/guide/essentials/router-and-nav.md',
-    '/guide/essentials/permission.md',
-    '/guide/essentials/tags-view.md',
-    '/guide/essentials/new-page.md',
-    '/guide/essentials/style.md',
-    '/guide/essentials/server.md',
-    '/guide/essentials/mock-api.md',
-    '/guide/essentials/import.md',
-    '/guide/essentials/deploy.md',
-    '/guide/essentials/env.md'
+    '/guide/essentials/use.md',
+    '/guide/essentials/config.md'
   ]
   return mapArr.map(i => {
     return type + i
   })
 }
 
-function genAdvancedSidebar(type = '') {
-  const mapArr = [
-    '/guide/advanced/cors.md',
-    '/guide/advanced/eslint.md',
-    '/guide/advanced/git-hook.md',
-    '/guide/advanced/style-guide.md',
-    '/guide/advanced/lazy-loading.md',
-    '/guide/advanced/chart.md',
-    '/guide/advanced/icon.md',
-    '/guide/advanced/cdn.md',
-    '/guide/advanced/theme.md',
-    '/guide/advanced/i18n.md',
-    '/guide/advanced/error.md',
-    '/guide/advanced/webpack.md'
-  ]
-  return mapArr.map(i => {
-    return type + i
-  })
+function genDispatchSidebar(type = '') {
+    const mapArr = [
+        '/feature/dispatch/job.md',
+        '/feature/dispatch/delay-job.md',
+        '/feature/dispatch/arg.md',
+        '/feature/dispatch/datasource.md',
+        '/feature/dispatch/calendar.md'
+    ]
+    return mapArr.map(i => {
+        return type + i
+    })
+}
+
+function genApplicationSidebar(type = '') {
+    const mapArr = [
+        '/feature/application/project.md',
+        '/feature/application/program.md',
+        '/feature/application/gist.md',
+        '/feature/application/sys-info.md',
+        '/feature/application/interface-file.md'
+    ]
+    return mapArr.map(i => {
+        return type + i
+    })
+}
+
+function genMonitorSidebar(type = '') {
+    const mapArr = [
+        '/feature/monitor/monitor.md',
+        '/feature/monitor/retry.md'
+    ]
+    return mapArr.map(i => {
+        return type + i
+    })
+}
+
+function genSystemSidebar(type = '') {
+    const mapArr = [
+        '/feature/system/tenant.md'
+    ]
+    return mapArr.map(i => {
+        return type + i
+    })
 }
