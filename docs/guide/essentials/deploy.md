@@ -6,12 +6,12 @@
 
 本项目支持以下数据库
 
-| 数据库     | 版本支持                         | 驱动包                      | 项目使用        |
-| :--------- | -------------------------------- | --------------------------- | --------------- |
-| Mysql      | 5.5+                             | mysql-connector-java@5.1.48 | Mysql 5.7       |
-| Oracle     | 11g/12c 等                       | ojdbc6@11.2.0.3             | Oracle 11.2     |
-| SQLServer  | 2008/2012/2014/2016/2017/2019 等 | mssql-jdbc@6.2.2.jre8       | SQL Server 2019 |
-| PostgreSQL | 8.2+                             | postgresql&42.2.8           | PostgreSQL 12   |
+| 数据库     | 项目使用        | 版本支持                         | 驱动包                      |
+| :--------- | --------------- | -------------------------------- | --------------------------- |
+| Mysql      | Mysql 5.7       | 5.5+                             | mysql-connector-java@5.1.48 |
+| Oracle     | Oracle 11.2     | 11g/12c...                       | ojdbc6@11.2.0.3             |
+| SQLServer  | SQL Server 2019 | 2008/2012/2014/2016/2017/2019... | mssql-jdbc@6.2.2.jre8       |
+| PostgreSQL | PostgreSQL 12   | 8.2+                             | postgresql&42.2.8           |
 
 :::
 
@@ -24,6 +24,8 @@
 - log
 
 用来放置操作日志、归档日志等
+
+在部署时，请先创建相应的数据库，然后根据不同的数据库，执行不同的数据库脚本
 
 ## 部署程序
 
@@ -64,3 +66,17 @@ GitHub [https://github.com/attemper/attemper](https://github.com/attemper/attemp
 Gitee [https://gitee.com/attemper/attemper](https://gitee.com/attemper/attemper)
 
 :::
+
+- 模块说明
+
+attemper-admin
+前端
+
+attemper-web
+调度中心管理平台(集成了调度器的功能)
+
+attemper-scheduler
+调度器
+
+attemper-executor
+执行器
