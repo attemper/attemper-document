@@ -197,6 +197,12 @@ sdk 中为接入的系统提供了四个任务模板接口<br>
 
 ### Shell-Bash
 
+支持执行 Linux 的 Bash 脚本 <br>
+
+- 直接执行脚本内容
+
+- 执行脚本文件
+
 ### Shell-Cmd
 
 ### Groovy
