@@ -4,16 +4,16 @@
 
 任务是调度中心执行的入口，任务由 `bpmn-js` 通过拖拽的方式对任务节点进行设计，对任务形成流式编排。
 
-通过任务，可以实现以下一些典型的需求
+通过任务编排，可以实现以下一些典型的需求
 
 - 串行<br>
   节点按线条指向先后执行
 
 - 并行<br>
-  一批节点可以同时执行后汇聚
+  一批节点可以并发执行后汇聚
 
 - 分支判断<br>
-  根据参数判断条件，改变后续调用的节点
+  根据参数判断条件，改变后续执行的走向
 
 ## 任务节点
 
@@ -25,7 +25,9 @@
   - Http 任务
     - 同步任务
     - 异步任务
-  - 通知任务
+  - Sql 任务
+  - Ftp 任务
+  - 邮件任务
 - 脚本任务节点
   使用基于 jsr223 标准开发的各个脚本语言的环境
   - `Shell`
@@ -33,25 +35,21 @@
       Linux 上的 shell 脚本
     - `Cmd`<br>
       Windows 上的命令行脚本
-  - `Python`
   - `Groovy`
-  - `Perl`
+  - `Python`/`Perl`/`Ruby`等
 
-### Http任务
-#### spring(boot/mvc)框架 <Badge text="sdk0.9.5"/>
-使用此类框架的任务，应使用调度中心提供的sdk<br>
-- spring boot
+### Http 任务
 
-[Spring Boot项目对接示例](http://196.123.135.6:8001/attemper/attemper-samples/tree/master/attemper-samples-spring-boot)
-::: tip 框架依赖
-JDK:1.8
-SpringBoot:&gt;=1.3.x
-:::
-*引入依赖*<br>
-[查看pom.xml配置](http://196.123.135.6:8001/attemper/attemper-samples/blob/master/attemper-samples-spring-boot/pom.xml)
-``` Markup {7}
+#### spring(boot/mvc)框架 <Badge text="sdk1.0.0"/>
+
+使用此类框架的任务，应使用调度中心提供的 sdk
+
+_引入依赖_<br>
+[参考 pom.xml 配置](https://gitee.com/attemper/attemper-samples/blob/master/attemper-samples-task/pom.xml)
+
+```Markup {7}
 <properties>
-    <sdk.version>0.9.5</sdk.version>
+    <sdk.version>1.0.0</sdk.version>
 </properties>
 
 <dependency>
@@ -61,11 +59,19 @@ SpringBoot:&gt;=1.3.x
 </dependency>
 ```
 
-*注入自动配置类*<br> 
-[查看启动类配置](http://196.123.135.6:8001/attemper/attemper-samples/blob/master/attemper-samples-spring-boot/src/main/java/com/github/attemper/samples/SampleApplication.java)
+- spring boot
+
+[Spring Boot 项目对接示例](https://gitee.com/attemper/attemper-samples/tree/master/attemper-samples-spring-boot)
+::: tip 框架依赖
+JDK:1.8
+SpringBoot:&gt;=1.3.x
+:::
+
+_注入自动配置类_<br>
+[参考启动类配置](https://gitee.com/attemper/attemper-samples/blob/master/attemper-samples-spring-boot/src/main/java/com/github/attemper/samples/SampleApplication.java)
 在启动类上加上如下配置
 
-``` Java
+```Java
 import com.github.attemper.java.sdk.micro.executor.conf.ExecutorAutoConfiguration;
 @Import({
         ExecutorAutoConfiguration.class
@@ -74,97 +80,99 @@ import com.github.attemper.java.sdk.micro.executor.conf.ExecutorAutoConfiguratio
 
 - spring mvc
 
-[Spring MVC项目对接示例](http://196.123.135.6:8001/attemper/attemper-samples/tree/master/attemper-samples-spring)
+[Spring MVC 项目对接示例](https://gitee.com/attemper/attemper-samples/tree/master/attemper-samples-spring)
 ::: tip 框架依赖
 JDK:&gt;=1.6
 Spring:&gt;=3.x
 :::
-*引入依赖*<br>
-[查看pom.mxl配置](http://196.123.135.6:8001/attemper/attemper-samples/blob/master/attemper-samples-spring/pom.xml)
-``` Markup {7} 
-<properties>
-    <sdk.version>0.9.5</sdk.version>
-</properties>
 
-<dependency>
-    <groupId>com.github.attemper</groupId>
-    <artifactId>attemper-java-sdk-rest-executor</artifactId>
-    <version>${sdk.version}</version>
-</dependency>
-```
-*在配置类中引入自动配置类*<br>
-[查看配置类]([查看xml配置](http://196.123.135.6:8001/attemper/attemper-samples/blob/master/attemper-samples-spring/pom.xml))
-``` Java 
+_在配置类中引入自动配置类_<br>
+[参考配置类](https://gitee.com/attemper/attemper-samples/blob/master/attemper-samples-spring/src/main/java/com/github/attemper/samples/spring/conf/SampleConfiguration.java)
+
+```Java
 import com.github.attemper.java.sdk.rest.conf.RestConfiguration;
 import com.github.attemper.java.sdk.rest.executor.conf.RestExecutorConfiguration;
 @Import({
         RestConfiguration.class,
         RestExecutorConfiguration.class
 })
+
+@Bean
+public ExecutorRestClient executorRestClient() {
+    return new ExecutorRestClient();
+}
 ```
 
-spring boot/mvc项目开发任务是通用的，原理是调度中心通过调用自己的路由接口，以反射的方式调用Bean中的方法<br>
+spring boot/mvc 项目开发任务是通用的，原理是调度中心通过调用自己的路由接口，以反射的方式调用 Bean 中的方法<br>
 同步调用<br>
 ::: tip 调用机制
 调度中心与被调用系统保持双向连接，直到任务执行结束或超时
 :::
-``` Java
+
+```Java
 // /api/router/sync
 com.github.attemper.java.sdk.rest.executor.controller.SyncRouterController
 com.github.attemper.java.sdk.rest.executor.service.RouterService
 ```
+
 异步调用<br>
 ::: tip 调用机制
 调度中心在调用后，即进行锁等待，被调用系统需在任务执行结束或超时后，通知调度中心
 :::
-``` Java
+
+```Java
 // /api/router/async
 com.github.attemper.java.sdk.rest.executor.controller.AsyncRouterController
 com.github.attemper.java.sdk.rest.executor.service.RouterService
 ```
 
-sdk中为接入的系统提供了四个任务模板接口<br>
+sdk 中为接入的系统提供了四个任务模板接口<br>
 所在包：`com.github.attemper.java.sdk.rest.executor.template`
 
-|接口名                     |  参数 |  返回值  |使用例子                                      |
-|:--------------------------|-------|----------|----------------------------------------------|
-|Executing                  |无     |无        |[ExecutingDemo](http://196.123.135.6:8001/attemper/attemper-samples/tree/master/attemper-samples-spring-boot/src/main/java/com/github/attemper/samples/demo06/ExecutingDemo.java)|
-|ExecutingWithParam         |有     |无        |[ExecutingWithParamDemo](http://196.123.135.6:8001/attemper/attemper-samples/tree/master/attemper-samples-spring-boot/src/main/java/com/github/attemper/samples/demo06/ExecutingWithParamDemo.java)|
-|ExecutingWithResult        |无     |有        |[ExecutingWithResultDemo](http://196.123.135.6:8001/attemper/attemper-samples/tree/master/attemper-samples-spring-boot/src/main/java/com/github/attemper/samples/demo06/ExecutingWithResultDemo.java)|
-|ExecutingWithParamAndResult|有     |有        |[ExecutingWithParamAndResultDemo](http://196.123.135.6:8001/attemper/attemper-samples/tree/master/attemper-samples-spring-boot/src/main/java/com/github/attemper/samples/demo06/ExecutingWithParamAndResultDemo.java)|
+| 接口名                      | 参数 | 返回值 |
+| :-------------------------- | ---- | ------ |
+| Executing                   | 无   | 无     |
+| ExecutingWithParam          | 有   | 无     |
+| ExecutingWithResult         | 无   | 有     |
+| ExecutingWithParamAndResult | 有   | 有     |
 
-而如果需要在一个Bean中调用多个方法，则可不使用这四个接口之一<br>
-请参考[一个Bean中多个方法需被调度的例子](http://196.123.135.6:8001/attemper/attemper-samples/blob/master/attemper-samples-spring-boot/src/main/java/com/github/attemper/samples/demo05/NoParamDemo.java)
+而如果需要在一个 Bean 中调用多个方法，则不需要使用这些接口，直接声明 public 方法即可<br>
 
-在完成被调用系统的配置和一个接入的Bean的编写后，需要在调度中心配置它，让它能够成功被调起<br>
-以[ExecutingWithParamAndResultDemo](http://196.123.135.6:8001/attemper/attemper-samples/tree/master/attemper-samples-spring-boot/src/main/java/com/github/attemper/samples/demo06/ExecutingWithParamAndResultDemo.java)为例
-``` Java
-/**
- * bean=executingWithParamAndResultDemo
- */
-@Service
-public class ExecutingWithParamAndResultDemo implements ExecutingWithParamAndResult<Void> {
+#### 其他 Http 任务(非 java 语言的 spring 框架的 web 项目)
 
-    /**
-     * method=execute
-     */
-    @Override
-    public LogResult execute(TaskParam<Void> param) {
-        System.out.println("executing with param and result");
-        return new LogResult();
-    }
-}
-```
+支持以配置 http 的 url 的方式接入
 
-#### 其他(非java语言web项目)
+- 请求类型
+  - POST
+  - GET
+  - PUT
+  - DELETE
 
-### 通知任务
+[URI 接入例子](https://gitee.com/attemper/attemper-samples/blob/master/attemper-samples-task/src/main/java/com/github/attemper/samples/task/demo003/UriTaskController.java)
+
+### Sql 任务
+
+执行器内置 Sql 任务，配置相应的数据源后，可在运行时执行 Sql 语句，目前支持
+
+- select
+  查询的数据作为对象(字符串、整数等单行单列的结果集)、Map(单行多列的结果集)、List(多行多列的结果集)
+- insert
+
+- update
+
+- delete
+
+### Ftp 任务
+
+### 邮件任务
 
 ### Shell-Bash
 
 ### Shell-Cmd
 
-### Python
+### Groovy
+
+### Python/Perl/Ruby 等
 
 ## 触发器
 
