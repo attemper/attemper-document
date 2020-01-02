@@ -56,11 +56,6 @@ var UsageNav = [
         link: '/feature/application/project.md'
       },
       {
-        text: 'Program',
-        textZH: '程序包',
-        link: '/feature/application/program.md'
-      },
-      {
         text: 'Gist',
         textZH: '代码片段',
         link: '/feature/application/gist.md'
@@ -91,5 +86,5 @@ var UsageNav = [
 ]
 
 module.exports = {
-    UsageNav
+  UsageNav
 }

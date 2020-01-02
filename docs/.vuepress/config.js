@@ -130,7 +130,6 @@ function genDispatchSidebar(type = '') {
 function genApplicationSidebar(type = '') {
   const mapArr = [
     '/feature/application/project.md',
-    '/feature/application/program.md',
     '/feature/application/gist.md',
     '/feature/application/sys-info.md',
     '/feature/application/interface-file.md'
