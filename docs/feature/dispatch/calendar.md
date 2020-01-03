@@ -40,4 +40,4 @@
 
 ### 参数
 
-在[参数](/feature/dispatch/arg.md)中，有一个预置类型`TradeDate`，可以根据日历，计算 T 日/T+1 日等
+在参数管理中，预置类型[TradeDate](/feature/dispatch/arg.md#交易日-tradedate)，可以根据日历，计算 T 日/T+1 日等
