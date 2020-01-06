@@ -9,7 +9,7 @@
 - 串行<br>
   节点按线条指向先后执行
 
-- 并行<br>
+- 并发<br>
   一批节点可以并发执行后汇聚
 
 - 分支判断<br>
@@ -47,6 +47,13 @@
 _引入依赖_<br>
 [参考 pom.xml 配置](https://gitee.com/attemper/attemper-samples/blob/master/attemper-samples-task/pom.xml)
 
+- spring boot
+
+[Spring Boot 项目对接示例](https://gitee.com/attemper/attemper-samples/tree/master/attemper-samples-spring-boot)
+::: tip 框架依赖
+JDK1.8 SpringBoot&gt;=1.3.x
+:::
+
 ```Markup {7}
 <properties>
     <sdk.version>1.0.0</sdk.version>
@@ -59,17 +66,8 @@ _引入依赖_<br>
 </dependency>
 ```
 
-- spring boot
-
-[Spring Boot 项目对接示例](https://gitee.com/attemper/attemper-samples/tree/master/attemper-samples-spring-boot)
-::: tip 框架依赖
-JDK:1.8
-SpringBoot:&gt;=1.3.x
-:::
-
-_注入自动配置类_<br>
+引入自动配置类<br>
 [参考启动类配置](https://gitee.com/attemper/attemper-samples/blob/master/attemper-samples-spring-boot/src/main/java/com/github/attemper/samples/SampleApplication.java)
-在启动类上加上如下配置
 
 ```Java
 import com.github.attemper.java.sdk.micro.executor.conf.ExecutorAutoConfiguration;
@@ -82,11 +80,22 @@ import com.github.attemper.java.sdk.micro.executor.conf.ExecutorAutoConfiguratio
 
 [Spring MVC 项目对接示例](https://gitee.com/attemper/attemper-samples/tree/master/attemper-samples-spring)
 ::: tip 框架依赖
-JDK:&gt;=1.6
-Spring:&gt;=3.x
+JDK&gt;=1.6 Spring&gt;=3.x
 :::
 
-_在配置类中引入自动配置类_<br>
+```Markup {7}
+<properties>
+    <sdk.version>1.0.0</sdk.version>
+</properties>
+
+<dependency>
+    <groupId>com.github.attemper</groupId>
+    <artifactId>attemper-java-sdk-rest-executor</artifactId>
+    <version>${sdk.version}</version>
+</dependency>
+```
+
+引入自动配置类<br>
 [参考配置类](https://gitee.com/attemper/attemper-samples/blob/master/attemper-samples-spring/src/main/java/com/github/attemper/samples/spring/conf/SampleConfiguration.java)
 
 ```Java
@@ -238,4 +247,24 @@ sdk 中为接入的系统提供了四个任务模板接口<br>
 
 ## 参数
 
+在任务中使用参数，有以下一些场景
+
+- 参数注入
+
+  - 运行时执行器将参数传递给接入的系统(HTTP 任务)
+  - 运行时将参数传递给脚本任务(比如 Shell、Python 任务)
+
+- 参数传递
+  - 运行时替换任务的配置(比如按日期生成的文件目录)
+  - 前置任务执行结果作为参数，传递给后置任务
+
 ## 条件
+
+在很多时候，每日只执行一次的任务配置成轮询是不得已的，因为任务上下游或者自身的依赖不满足。本项目将这种需求抽取为依赖**条件**。目前抽取了三种依赖条件
+
+- SQL
+  在所配数据源中，执行 SQL 语句，能够查到数据则视为满足条件
+- FTP 文件
+  在所配服务器中检测文件是否存在(生成)，存在则视为满足条件
+- 本地文件
+  在执行该任务的执行器本地(Docker 为镜像内，可能需要挂载)检测文件是否存在，存在则视为满足条件
