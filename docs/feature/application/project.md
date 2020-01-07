@@ -34,16 +34,15 @@
 
 执行器会从自己注册的注册中心中，根据服务名取出被调系统的可用地址，进行调用
 
-理论上，只要能与本项目所使用的的 Spring Boot 框架集成的，支持(包括但不限于)以下中间件作为注册中心
+(包括但不限于)以下中间件可作为注册中心(只要能与本项目所使用的的 Spring Boot/Cloud 框架集成的，理论上都支持)
 
-- Eureka
+- [Eureka](https://spring.io/projects/spring-cloud-netflix)
+- [Zookeeper](https://spring.io/projects/spring-cloud-zookeeper)
+- [Nacos](https://spring.io/projects/spring-cloud-alibaba)
+- [Consul](https://spring.io/projects/spring-cloud-consul)
 
-- Zookeeper
-
-- Nacos
-
-- Consul
-
-- Etcd
+::: tip 提示
+本项目使用 Eureka 作为服务发现，如需使用其他注册中心，请自行引入相关 jar 包，并修改调度中心、执行器、调度器的`application.yml`文件的配置
+:::
 
 ## 绑定执行器
