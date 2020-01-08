@@ -1,18 +1,18 @@
 # 任务
 
-## 任务
+## 定义
 
 任务是调度中心执行的入口，任务由 `bpmn-js` 通过拖拽的方式对任务节点进行设计，对任务形成流式编排。
 
 通过任务编排，可以实现以下一些典型的需求
 
-- 串行<br>
+- 串行
   节点按线条指向先后执行
 
-- 并发<br>
+- 并发
   一批节点可以并发执行后汇聚
 
-- 分支判断<br>
+- 分支判断
   根据参数判断条件，改变后续执行的走向
 
 ## 任务节点
@@ -31,9 +31,9 @@
 - 脚本任务节点
   可以直接执行脚本内容或文件
   - `Shell`
-    - `Bash`<br>
+    - `Bash`
       Linux 上的 shell 脚本
-    - `Cmd`<br>
+    - `Cmd`
       Windows 上的命令行脚本
   - `Groovy`
   - `Python`/`Perl`/`Ruby`等
@@ -43,9 +43,6 @@
 #### spring(boot/mvc)框架 <Badge text="sdk1.0.0"/>
 
 使用此类框架的任务，应使用调度中心提供的 sdk
-
-_引入依赖_<br>
-[参考 pom.xml 配置](https://gitee.com/attemper/attemper-samples/blob/master/attemper-samples-task/pom.xml)
 
 - spring boot
 
@@ -66,8 +63,7 @@ JDK1.8 SpringBoot&gt;=1.3.x
 </dependency>
 ```
 
-引入自动配置类<br>
-[参考启动类配置](https://gitee.com/attemper/attemper-samples/blob/master/attemper-samples-spring-boot/src/main/java/com/github/attemper/samples/SampleApplication.java)
+引入自动配置类:[参考启动类配置](https://gitee.com/attemper/attemper-samples/blob/master/attemper-samples-spring-boot/src/main/java/com/github/attemper/samples/SampleApplication.java)
 
 ```Java
 import com.github.attemper.java.sdk.micro.executor.conf.ExecutorAutoConfiguration;
@@ -95,8 +91,7 @@ JDK&gt;=1.6 Spring&gt;=3.x
 </dependency>
 ```
 
-引入自动配置类<br>
-[参考配置类](https://gitee.com/attemper/attemper-samples/blob/master/attemper-samples-spring/src/main/java/com/github/attemper/samples/spring/conf/SampleConfiguration.java)
+引入自动配置类:[参考配置类](https://gitee.com/attemper/attemper-samples/blob/master/attemper-samples-spring/src/main/java/com/github/attemper/samples/spring/conf/SampleConfiguration.java)
 
 ```Java
 import com.github.attemper.java.sdk.rest.conf.RestConfiguration;
@@ -112,30 +107,13 @@ public ExecutorRestClient executorRestClient() {
 }
 ```
 
-spring boot/mvc 项目开发任务是通用的，原理是执行器通过调用 sdk 暴露的路由接口，以反射的方式调用 Bean 中的方法<br>
-同步调用<br>
+spring boot/mvc 项目开发任务是通用的，原理是执行器通过调用 sdk 暴露的路由接口，以反射的方式调用 Bean 中的方法  
 ::: tip 调用机制
-调度中心与被调用系统保持双向连接，直到任务执行结束或超时
+同步调用:调度中心与被调用系统保持双向连接，直到任务执行结束或超时  
+异步调用:调度中心在调用后，即进行锁等待，被调用系统需在任务执行结束或超时后，通知调度中心
 :::
 
-```Java
-// /api/router/sync
-com.github.attemper.java.sdk.rest.executor.controller.SyncRouterController
-com.github.attemper.java.sdk.rest.executor.service.RouterService
-```
-
-异步调用<br>
-::: tip 调用机制
-调度中心在调用后，即进行锁等待，被调用系统需在任务执行结束或超时后，通知调度中心
-:::
-
-```Java
-// /api/router/async
-com.github.attemper.java.sdk.rest.executor.controller.AsyncRouterController
-com.github.attemper.java.sdk.rest.executor.service.RouterService
-```
-
-sdk 中为接入的系统提供了四个任务模板接口<br>
+sdk 中为接入的系统提供了四个任务模板接口  
 所在包：`com.github.attemper.java.sdk.rest.executor.template`
 
 | 接口名                      | 参数 | 返回值 |
@@ -145,7 +123,7 @@ sdk 中为接入的系统提供了四个任务模板接口<br>
 | ExecutingWithResult         | 无   | 有     |
 | ExecutingWithParamAndResult | 有   | 有     |
 
-而如果需要在一个 Bean 中调用多个方法，则不需要使用这些接口，直接声明 public 方法即可<br>
+而如果需要在一个 Bean 中调用多个方法，则不需要使用这些接口，直接声明 public 方法即可
 
 #### 其他 Http 任务(非 java 语言的 spring 框架的 web 项目)
 
@@ -163,56 +141,52 @@ sdk 中为接入的系统提供了四个任务模板接口<br>
 
 执行器内置 Sql 任务，配置相应的数据源后，可在运行时执行 Sql 语句，目前支持
 
-- select <br>
+- select
   查询的结果集为
-  - 对象 <br>
+  - 对象
     字符串、整数等单行单列
-  - Map <br>
+  - Map
     单行多列
-  - List <br>
+  - List
     多行多列
-- insert <br>
+- insert
   执行插入语句
-- update <br>
+- update
   执行更新语句
-- delete <br>
+- delete
   执行删除语句
 
-[了解 Sql 参数？](/feature/dispatch/arg.md#sql-语句-sql)
+[Sql 参数](/feature/dispatch/arg.md#sql-语句-sql)
 
 ### Ftp 任务
 
 执行器内置 FTP 任务，主要有一下功能
 
-- 上传 <br>
+- 上传
   将本地文件上传至 FTP 服务器
-- 下载 <br>
+- 下载
   将 FTP 服务器上的文件下载到本地磁盘
 
 ### 邮件任务
 
-执行器内置邮件任务，抽取发送邮件的功能，有以下配置项<br>
+执行器内置邮件任务，抽取发送邮件的功能，有以下配置项
 
-- 发送方 <br>
-  发送方的邮箱账号，为空时取系统级配置`spring.mail.username`的值
-- 接收方 <br>
-  接收方的邮箱账号，多个以,隔开
-- 邮件主题 <br>
-  邮件的标题
-- 邮件内容 <br>
-  邮件的正文内容，支持`Html`和模板语言`FreeMarker`
+> 发送方:发送方的邮箱账号，为空时取系统级配置`spring.mail.username`的值  
+> 接收方:接收方的邮箱账号，多个以,隔开  
+> 邮件主题:邮件的标题  
+> 邮件内容:邮件的正文内容，支持`Html`和模板语言`FreeMarker`
 
-::: warning 请注意
+::: warning 注意
 使用时请接收方注意邮件是否被视作垃圾邮件而存入垃圾箱中
 :::
 
 ### Shell-Bash
 
-支持执行 Linux 的 Bash 脚本 <br>
+支持执行 Linux 的 Bash 脚本
 
 ### Shell-Cmd
 
-支持执行 Windows 的 Cmd 脚本 <br>
+支持执行 Windows 的 Cmd 脚本
 
 ### Groovy
 
@@ -222,8 +196,7 @@ sdk 中为接入的系统提供了四个任务模板接口<br>
 
 通过指定开发语言，支持执行其他脚本语言，如 Python/Perl/Ruby 等
 ::: warning 注意
-若执行器在非容器环境启动，则应当在系统中安装相应的脚本执行环境
-
+若执行器在非容器环境启动，则应当在系统中安装相应的脚本执行环境  
 若执行器以镜像方式启动，则必须自制包含 JRE8+和相应脚本执行环境的镜像
 :::
 
@@ -255,7 +228,7 @@ sdk 中为接入的系统提供了四个任务模板接口<br>
 
 ## 参数
 
-在任务中使用参数，有以下一些场景
+在任务中使用参数，有以下一些场景:
 
 - 参数注入
 
@@ -271,10 +244,9 @@ sdk 中为接入的系统提供了四个任务模板接口<br>
 ## 条件
 
 ::: warning 注意
-在很多时候，每日只执行一次的任务配置成轮询是不得已的，因为任务上下游或者自身的依赖在起初并不满足。
+在某些场景，每日只执行一次的任务配置成轮询是不得已的，因为任务上下游或者自身的依赖在起初并不满足。
 :::
-
-本项目将这种需求抽取为依赖**条件**。目前抽取了三种依赖条件
+本项目将这种需求抽取为依赖**条件**，目前抽取了三种依赖条件:
 
 - SQL
   在所配数据源中，执行 SQL 语句，能够查到数据则视为满足条件

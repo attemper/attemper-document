@@ -39,7 +39,7 @@ module.exports = {
             link: '/guide/'
           },
           {
-            text: '功能',
+            text: '模块',
             items: genNav(deepClone(UsageNav), 'ZH')
           }
         ],
@@ -130,9 +130,7 @@ function genDispatchSidebar(type = '') {
 function genApplicationSidebar(type = '') {
   const mapArr = [
     '/feature/application/project.md',
-    '/feature/application/gist.md',
-    '/feature/application/sys-info.md',
-    '/feature/application/interface-file.md'
+    '/feature/application/gist.md'
   ]
   return mapArr.map(i => {
     return type + i

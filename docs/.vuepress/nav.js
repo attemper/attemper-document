@@ -59,16 +59,6 @@ var UsageNav = [
         text: 'Gist',
         textZH: '代码片段',
         link: '/feature/application/gist.md'
-      },
-      {
-        text: 'SysInfo',
-        textZH: '应用信息',
-        link: '/feature/application/sys-info.md'
-      },
-      {
-        text: 'InterfaceFile',
-        textZH: '接口信息',
-        link: '/feature/application/interface-file.md'
       }
     ]
   },
