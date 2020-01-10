@@ -28,8 +28,8 @@
   - Sql 任务
   - Ftp 任务
   - 邮件任务
-- 脚本任务节点
-  可以直接执行脚本内容或文件
+- 脚本任务节点  
+  可以直接执行脚本代码或文件
   - `Shell`
     - `Bash`
       Linux 上的 shell 脚本
@@ -46,7 +46,7 @@
 
 - spring boot
 
-[Spring Boot 项目对接示例](https://gitee.com/attemper/attemper-samples/tree/master/attemper-samples-spring-boot)
+[Spring Boot 项目对接示例](https://github.com/attemper/attemper-samples/tree/master/attemper-samples-spring-boot)
 ::: tip 框架依赖
 JDK1.8 SpringBoot&gt;=1.3.x
 :::
@@ -63,7 +63,7 @@ JDK1.8 SpringBoot&gt;=1.3.x
 </dependency>
 ```
 
-引入自动配置类:[参考启动类配置](https://gitee.com/attemper/attemper-samples/blob/master/attemper-samples-spring-boot/src/main/java/com/github/attemper/samples/SampleApplication.java)
+引入自动配置类:[参考启动类配置](https://github.com/attemper/attemper-samples/blob/master/attemper-samples-spring-boot/src/main/java/com/github/attemper/samples/SampleApplication.java)
 
 ```Java
 import com.github.attemper.java.sdk.micro.executor.conf.ExecutorAutoConfiguration;
@@ -74,7 +74,7 @@ import com.github.attemper.java.sdk.micro.executor.conf.ExecutorAutoConfiguratio
 
 - spring mvc
 
-[Spring MVC 项目对接示例](https://gitee.com/attemper/attemper-samples/tree/master/attemper-samples-spring)
+[Spring MVC 项目对接示例](https://github.com/attemper/attemper-samples/tree/master/attemper-samples-spring)
 ::: tip 框架依赖
 JDK&gt;=1.6 Spring&gt;=3.x
 :::
@@ -91,7 +91,7 @@ JDK&gt;=1.6 Spring&gt;=3.x
 </dependency>
 ```
 
-引入自动配置类:[参考配置类](https://gitee.com/attemper/attemper-samples/blob/master/attemper-samples-spring/src/main/java/com/github/attemper/samples/spring/conf/SampleConfiguration.java)
+引入自动配置类:[参考配置类](https://github.com/attemper/attemper-samples/blob/master/attemper-samples-spring/src/main/java/com/github/attemper/samples/spring/conf/SampleConfiguration.java)
 
 ```Java
 import com.github.attemper.java.sdk.rest.conf.RestConfiguration;
@@ -135,7 +135,7 @@ sdk 中为接入的系统提供了四个任务模板接口
   - PUT
   - DELETE
 
-[URI 接入例子](https://gitee.com/attemper/attemper-samples/blob/master/attemper-samples-task/src/main/java/com/github/attemper/samples/task/demo003/UriTaskController.java)
+[URI 接入例子](https://github.com/attemper/attemper-samples/blob/master/attemper-samples-task/src/main/java/com/github/attemper/samples/task/demo003/UriTaskController.java)
 
 ### Sql 任务
 

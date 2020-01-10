@@ -1,10 +1,10 @@
-# 部署
+# 部署启动
 
 ## 数据库脚本
 
 ::: tip 说明
 
-本项目支持以下数据库
+当前，本项目支持以下数据库
 
 | 数据库     | 项目使用        | 版本支持                         | 驱动包                      |
 | :--------- | --------------- | -------------------------------- | --------------------------- |
@@ -25,7 +25,7 @@
 
 用来放置操作日志、归档日志等
 
-在部署时，请先创建相应的数据库，然后根据不同的数据库，执行不同的数据库脚本
+在部署时，请先创建相应的数据库，然后根据不同的数据库，执行不同的建表和初始化脚本
 
 ## 部署程序
 
@@ -43,8 +43,6 @@ Docker [https://hub.docker.com/u/attemper](https://hub.docker.com/u/attemper)
 
 GitHub Release [https://github.com/attemper/attemper/releases](https://github.com/attemper/attemper/releases)
 
-Gitee Release [https://gitee.com/attemper/attemper/releases](https://gitee.com/attemper/attemper/releases)
-
 :::
 
 ### war
@@ -52,8 +50,6 @@ Gitee Release [https://gitee.com/attemper/attemper/releases](https://gitee.com/a
 ::: tip War 资源地址
 
 GitHub Release [https://github.com/attemper/attemper/releases](https://github.com/attemper/attemper/releases)
-
-Gitee Release [https://gitee.com/attemper/attemper/releases](https://gitee.com/attemper/attemper/releases)
 
 :::
 
@@ -63,20 +59,17 @@ Gitee Release [https://gitee.com/attemper/attemper/releases](https://gitee.com/a
 
 GitHub [https://github.com/attemper/attemper](https://github.com/attemper/attemper)
 
-Gitee [https://gitee.com/attemper/attemper](https://gitee.com/attemper/attemper)
-
 :::
 
-- 模块说明
+## 验证
 
-attemper-admin
-前端
+1.启动正常
+::: warning 注意
+内网启动时，可能会报邮箱(java mail)相关的报错，不影响正常启动，但影响邮件告警
+:::
 
-attemper-web
-调度中心管理平台(集成了调度器的功能)
+2.使用默认的超管账号登录
 
-attemper-scheduler
-调度器
-
-attemper-executor
-执行器
+|   账号   |      密码      |
+| :------: | :------------: |
+| attemper | admin@Attemper |

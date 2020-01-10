@@ -106,8 +106,7 @@ function genGuideSidebar(type = '') {
     '/guide/',
     '/guide/essentials/deploy.md',
     '/guide/essentials/use.md',
-    '/guide/essentials/config.md',
-    '/guide/essentials/demo.md'
+    '/guide/essentials/config.md'
   ]
   return mapArr.map(i => {
     return type + i
