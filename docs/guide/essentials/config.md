@@ -257,6 +257,10 @@ Cron 表达式触发器是最常用的，借助调度中心提供的图形设计
 
 ![](../assets/trigger/trigger-calendar-offset.png)
 
+### 每日周期
+
+### 日历周期
+
 ## 项目
 
 - 菜单:应用管理-项目管理
