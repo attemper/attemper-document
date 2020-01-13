@@ -76,4 +76,5 @@ JDK&gt;=1.6 Spring&gt;=3.x
 
 ## 开发
 
-开发时请使用 DelayJobService
+开发时请使用`DelayJobService`,参考注释使用
+[延迟任务 Demo](https://github.com/attemper/attemper-samples/tree/master/attemper-samples-task/src/main/java/com/github/attemper/samples/task/demo300)
