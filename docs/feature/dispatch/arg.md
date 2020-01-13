@@ -21,6 +21,14 @@
 
 部分参数类型的详细解释如下
 
+### 基本数据类型
+
+`String`/`Boolean`/`Integer`/`Long`/`Date`/`Time`/`DateTime`
+
+### 集合类型
+
+`List`/`Map`,可使用基本数据类型作为泛型参数
+
 ### Sql 语句(Sql)
 
 仅支持查询语句(`select`开头),可指定[数据源](/feature/dispatch/datasource.md)
