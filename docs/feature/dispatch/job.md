@@ -91,7 +91,7 @@ JDK&gt;=1.6 Spring&gt;=3.x
 </dependency>
 ```
 
-引入自动配置类:[参考配置类](https://github.com/attemper/attemper-samples/blob/master/attemper-samples-spring/src/main/java/com/github/attemper/samples/spring/conf/SampleConfiguration.java)
+引入自动配置类:[参考配置类](https://github.com/attemper/attemper-samples/blob/master/attemper-samples-spring/src/main/java/com/github/attemper/samples/spring/conf/ExecutorConfiguration.java)
 
 ```Java
 import com.github.attemper.java.sdk.rest.conf.RestConfiguration;

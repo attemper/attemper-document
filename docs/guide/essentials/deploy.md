@@ -15,51 +15,68 @@
 
 :::
 
-本项目使用双数据源(当然你可以在启动时覆盖配置指向同一个库)
+本项目使用 2 个数据源(当然你可以在启动时覆盖配置指向同一个库) [数据库脚本链接](https://github.com/attemper/attemper/tree/master/docs/database)
 
-- attemper
+| 库名     | 脚本地址                                     | 用途                                   |
+| -------- | -------------------------------------------- | -------------------------------------- |
+| attemper | {mysql/oracle/sqlserver/postgresql}/attemper | 调度配置(camunda/quartz)、执行记录等表 |
+| log      | {mysql/oracle/sqlserver/postgresql}/log      | 操作日志、归档日志等                   |
 
-用来放置调度配置、执行记录等表
+SQL 执行步骤:  
+1.创建相应的数据库，根据不同的数据库类型，选择上述地址的建表语句执行  
+2.在`attemper`库中执行初始化数据的脚本[attemper_init_data.sql](https://github.com/attemper/attemper/tree/master/docs/database/attemper_init_data.sql)
 
-- log
+## 启动程序
 
-用来放置操作日志、归档日志等
+### 本地启动
 
-在部署时，请先创建相应的数据库，然后根据不同的数据库，执行不同的建表和初始化脚本
-
-## 部署程序
-
-### docker
-
-::: tip Docker Hub 镜像仓库
-
-Docker [https://hub.docker.com/u/attemper](https://hub.docker.com/u/attemper)
-
-:::
-
-### jar
-
-::: tip Jar 包下载地址
-
-GitHub Release [https://github.com/attemper/attemper/releases](https://github.com/attemper/attemper/releases)
-
-:::
-
-### war
-
-::: tip War 资源地址
-
-GitHub Release [https://github.com/attemper/attemper/releases](https://github.com/attemper/attemper/releases)
-
-:::
-
-### idea/eclipse...
+- 适用 Eclipse/Idea 等开发工具
 
 ::: tip 项目源码地址
-
 GitHub [https://github.com/attemper/attemper](https://github.com/attemper/attemper)
-
 :::
+
+- 下载项目源码，在完成编译后，启动项目
+  - 调度中心-前端:`attemper-admin`  
+    使用`npm`命令下载依赖后启动，参考前端的 README
+  - 调度中心-后端:`attemper-web`  
+    修改配置:`attemper-web/src/main/resources/application.yml`  
+    启动类：`com.github.attemper.web.WebApplication`
+  - 执行器:`attemper-executor`  
+    修改配置:`attemper-executor/src/main/resources/application.yml`  
+    启动类：`com.github.attemper.executor.ExecutorApplication`
+  - 调度器:`attemper-scheduler`  
+    修改配置:`attemper-scheduler/src/main/resources/application.yml`  
+    启动类：`com.github.attemper.scheduler.SchedulerApplication`
+
+::: warning 注意
+请注意(可能需要)修改相关配置，包括但不限于:
+
+- 前端调用后端的地址，在 attemper-admin/vue.config.js
+- 数据库连接、账号、密码
+- 注册中心的地址
+- 告警邮箱信息(源码是以 xxx 占位的)
+  :::
+
+### Docker 镜像
+
+::: tip Docker Hub 镜像仓库
+Docker [https://hub.docker.com/u/attemper](https://hub.docker.com/u/attemper)
+:::
+
+- 各 Docker 仓库
+
+  - [调度中心-前端](https://hub.docker.com/r/attemper/attemper-admin/tags)  
+    **注**:前端项目由于需要连后台，镜像一般需要自己定制
+  - [调度中心-后端](https://hub.docker.com/r/attemper/attemper-web/tags)
+  - [执行器](https://hub.docker.com/r/attemper/attemper-executor/tags)
+  - [调度器](https://hub.docker.com/r/attemper/attemper-scheduler/tags)
+
+  启动命令参考
+
+  ```bash
+  docker run --net host -e JAVA_OPTS="-Xms1024m -Xmx2048m --spring.datasource.hikari.first.jdbc-url=jdbc:mysql://xxx:3306/attemper?allowMultiQueries=true&characterEncoding=UTF-8&useSSL=false --spring.datasource.hikari.second.jdbc-url=jdbc:mysql://xxx:3306/log?allowMultiQueries=true&characterEncoding=UTF-8&useSSL=false" attemper/attemper-web或executor或scheduler:1.0.0
+  ```
 
 ## 验证
 

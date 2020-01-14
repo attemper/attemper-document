@@ -80,7 +80,7 @@ module.exports = {
   locales: {
     '/': {
       lang: 'zh-CN',
-      description: '多租户、弹性伸缩、异步的分布式任务调度应用'
+      description: '分布式、多租户的支持流程编排的任务调度应用'
     },
     '/en/': {
       lang: 'en-US',

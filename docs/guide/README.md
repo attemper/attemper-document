@@ -4,12 +4,12 @@ pageClass: getting-started
 
 # 系统简介
 
-[![spring-boot](https://img.shields.io/badge/spring--boot-2.2.2.RELEASE-brightgreen.svg)](https://github.com/spring-projects/spring-boot/releases/tag/v2.1.5.RELEASE)
-[![spring-cloud](https://img.shields.io/badge/spring--cloud-Greenwich.SR4-brightgreen.svg)](https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Greenwich-Release-Notes)
-[![quartz](https://img.shields.io/badge/quartz-2.3.2-brightgreen.svg)](https://github.com/quartz-scheduler/quartz/releases/tag/quartz-2.3.1)
-[![camunda](https://img.shields.io/badge/camunda-7.12.0-brightgreen.svg)](https://github.com/camunda/camunda-bpm-platform/releases/tag/7.11.0)
-[![disruptor](https://img.shields.io/badge/disruptor-3.4.2-brightgreen.svg)](https://github.com/LMAX-Exchange/disruptor/releases/tag/3.4.2)
-[![vue](https://img.shields.io/badge/vue-2.6.10-brightgreen.svg)](https://github.com/vuejs/vue)
+[![spring-boot](https://img.shields.io/badge/spring--boot-2.2.2.RELEASE-brightgreen.svg)](https://github.com/spring-projects/spring-boot)
+[![spring-cloud](https://img.shields.io/badge/spring--cloud-Greenwich.SR4-brightgreen.svg)](https://github.com/spring-projects/spring-cloud)
+[![quartz](https://img.shields.io/badge/quartz-2.3.2-brightgreen.svg)](https://github.com/quartz-scheduler/quartz)
+[![camunda](https://img.shields.io/badge/camunda-7.12.0-brightgreen.svg)](https://github.com/camunda/camunda-bpm-platform)
+[![disruptor](https://img.shields.io/badge/disruptor-3.4.2-brightgreen.svg)](https://github.com/LMAX-Exchange/disruptor)
+[![vue](https://img.shields.io/badge/vue-2.6.11-brightgreen.svg)](https://github.com/vuejs/vue)
 [![element-ui](https://img.shields.io/badge/element--ui-2.13.0-brightgreen.svg)](https://github.com/ElemeFE/element)
 
 Attemper 是一个分布式任务调度应用，基于 Java 语言实现（前端是 Vue）。
@@ -22,7 +22,6 @@ Attemper 是一个分布式任务调度应用，基于 Java 语言实现（前�
   - 基于数据库锁(quartz 原生)实现分布式任务调度
   - 使用 disruptor 来加速任务分发和执行
   - 支持延迟调度(由业务系统运行时调用 API)
-  - 可作为远程服务或者 Agent 来部署
   - 可手工触发任务
   - 可重试(支持从指定的错误节点开始)
   - 可终止任务执行

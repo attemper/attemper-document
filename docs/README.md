@@ -23,5 +23,5 @@ features:
   - title: 技术栈
     details: spring-boot@2+/spring-cloud
       quartz/disruptor/camunda
-footer: Apache V2 Licensed | Copyright © 2019-present ldang264
+footer: MIT Licensed | Copyright © 2020-present ldang264
 ---
