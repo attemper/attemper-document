@@ -7,7 +7,7 @@ var { genNav, deepClone } = utils
 module.exports = {
   title: 'Attemper',
   description: '--',
-  base: '/',
+  base: '/attemper-document/',
   head: [
     [
       'link',

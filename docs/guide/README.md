@@ -40,7 +40,7 @@ Attemper 是一个分布式任务调度应用，基于 Java 语言实现（前�
   - 支持手工触发任务(调试、补采)
 
 - 触发器
-  - Cron 表达式触发器（quartz）：支持 Linux 的 Crontab 的触发器
+  - Cron 表达式触发器（quartz)
   - 每日周期触发器（quartz）：支持形如每个交易日 09:15 到 15:00 每 90s 执行一次
   - 日历周期触发器（quartz）：支持形如每月第 1 天开始，每隔 2 周执行一次
   - 日程偏移触发器（扩展）：支持形如每周第一个交易日 07:00 执行一次
@@ -48,7 +48,7 @@ Attemper 是一个分布式任务调度应用，基于 Java 语言实现（前�
 - 参数
   - 支持 String,Boolean,Inetger,Double,Long,Date,Time,DateTime,List,Map,Sql,Gist,TradeDate 等类型
   - 任务及其节点可绑定参数
-  - 参数可在任务间传递
+  - 参数可在节点或父子任务间传递
 
 - 日历
   - 支持证券交易日、自然日、工作日、法定节假日等
