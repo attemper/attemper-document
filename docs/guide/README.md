@@ -4,8 +4,8 @@ pageClass: getting-started
 
 # 系统简介
 
-[![spring-boot](https://img.shields.io/badge/spring--boot-2.2.2.RELEASE-brightgreen.svg)](https://github.com/spring-projects/spring-boot)
-[![spring-cloud](https://img.shields.io/badge/spring--cloud-Greenwich.SR4-brightgreen.svg)](https://github.com/spring-projects/spring-cloud)
+[![spring-boot](https://img.shields.io/badge/spring--boot-2.2.6.RELEASE-brightgreen.svg)](https://github.com/spring-projects/spring-boot)
+[![spring-cloud](https://img.shields.io/badge/spring--cloud-Greenwich.SR5-brightgreen.svg)](https://github.com/spring-projects/spring-cloud)
 [![quartz](https://img.shields.io/badge/quartz-2.3.2-brightgreen.svg)](https://github.com/quartz-scheduler/quartz)
 [![camunda](https://img.shields.io/badge/camunda-7.12.0-brightgreen.svg)](https://github.com/camunda/camunda-bpm-platform)
 [![disruptor](https://img.shields.io/badge/disruptor-3.4.2-brightgreen.svg)](https://github.com/LMAX-Exchange/disruptor)
@@ -19,7 +19,7 @@ Attemper 是一个分布式任务调度应用，基于 Java 语言实现（前�
 
 ```bash
 - 调度
-  - 基于数据库锁(quartz 原生)实现分布式任务调度
+  - 基于Redis分布式锁或数据库锁(quartz 原生)实现分布式任务调度
   - 使用 disruptor 来加速任务分发和执行
   - 支持延迟调度(由业务系统运行时调用 API)
   - 可手工触发任务

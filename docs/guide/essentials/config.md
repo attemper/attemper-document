@@ -177,6 +177,14 @@
 
 ![](../assets/job/job-demo-056-email.png)
 
+### 钉钉机器人告警任务
+
+![](../assets/job/job-demo-057-dingtalk.png)
+
+### 企业微信机器人告警任务
+
+![](../assets/job/job-demo-058-wxwork.png)
+
 ### Shell 脚本任务
 
 ![](../assets/job/job-demo-200-shell.png)
